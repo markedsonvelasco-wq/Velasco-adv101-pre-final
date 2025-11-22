@@ -1,26 +1,228 @@
-@import "tailwindcss";
-
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+.page {
+  --accent: #6366F1;
+  --muted: #64748B;
+  --bg-1: #f8fafc;
+  --bg-2: #f1f5f9;
+  min-height: 100vh;
+  background: linear-gradient(180deg, var(--bg-1), var(--bg-2));
+  font-family: Inter, system-ui, Segoe UI, Roboto, 'Helvetica Neue', Arial;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+.header {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 20px 28px;
+  max-width: 1100px;
+  margin: 18px auto;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+.brand {
+  font-weight: 700;
+  font-size: 20px;
+  color: var(--accent);
+}
+
+.nav {
+  display: flex;
+  gap: 8px;
+}
+
+.nav-btn {
+  background: transparent;
+  border: 0;
+  padding: 8px 12px;
+  border-radius: 8px;
+  color: #334155;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.nav-btn:hover {
+  transform: translateY(-1px);
+  filter: brightness(0.98);
+}
+
+.nav-btn.active {
+  background: var(--accent);
+  color: white;
+  box-shadow: 0 6px 18px rgba(99, 102, 241, 0.18);
+}
+
+.search-area {
+  margin-left: auto;
+}
+
+.search {
+  padding: 10px 12px;
+  border-radius: 10px;
+  border: 1px solid #e6edf3;
+  min-width: 220px;
+  box-shadow: inset 0 1px 0 rgba(16, 24, 40, 0.02);
+}
+
+.wrap {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 12px 28px;
+  display: grid;
+  grid-template-columns: 360px 1fr;
+  gap: 20px;
+}
+
+.panel {
+  background: white;
+  border-radius: 12px;
+  padding: 18px;
+  box-shadow: 0 8px 24px rgba(16, 24, 40, 0.06);
+  border: 1px solid #eef2f6;
+}
+
+.panel-title {
+  margin: 0 0 12px 0;
+  font-size: 16px;
+  color: #0f172a;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.field {
+  padding: 10px 12px;
+  border-radius: 8px;
+  border: 1px solid #e6edf3;
+  background: #fff;
+}
+
+.field.title {
+  font-weight: 600;
+}
+
+.field.desc {
+  min-height: 80px;
+  resize: vertical;
+}
+
+.form-actions {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.primary {
+  background: var(--accent);
+  color: white;
+  padding: 10px 14px;
+  border-radius: 10px;
+  border: 0;
+  cursor: pointer;
+  box-shadow: 0 8px 20px rgba(99, 102, 241, 0.12);
+  transition: transform 0.12s ease, box-shadow 0.12s ease;
+}
+
+.primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 28px rgba(99, 102, 241, 0.16);
+}
+
+.primary:focus {
+  outline: 2px solid rgba(99, 102, 241, 0.18);
+  outline-offset: 3px;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 14px;
+}
+
+.card {
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+  padding: 14px;
+  border-radius: 12px;
+  background: linear-gradient(180deg, #fff, #fbfdff);
+  border: 1px solid #edf2ff;
+  transition: transform 0.12s ease, box-shadow 0.12s ease;
+}
+
+.card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 12px 30px rgba(16, 24, 40, 0.06);
+}
+
+.card.done {
+  opacity: 0.85;
+  background: linear-gradient(180deg, #f7f7fb, #f2fbf5);
+  border-color: #e6f2ec;
+}
+
+.card-left {
+  display: flex;
+  align-items: center;
+}
+
+.card-body {
+  flex: 1;
+}
+
+.card-title {
+  margin: 0;
+  font-size: 15px;
+  color: #0f172a;
+}
+
+.card-desc {
+  margin: 8px 0;
+  color: #475569;
+}
+
+.meta {
+  font-size: 12px;
+  color: var(--muted);
+}
+
+.card-right {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.ghost {
+  background: transparent;
+  border: 1px solid #e6edf3;
+  padding: 8px 10px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.danger {
+  background: #fee2e2;
+  border: 0;
+  padding: 8px 10px;
+  border-radius: 8px;
+  color: #b91c1c;
+  cursor: pointer;
+}
+
+.small {
+  font-size: 13px;
+  padding: 6px 8px;
+}
+
+.empty {
+  color: #475569;
+  padding: 18px;
+}
+
+@media (max-width: 880px) {
+  .wrap {
+    grid-template-columns: 1fr;
   }
-}
-
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  .header {
+    padding: 12px;
+  }
 }
